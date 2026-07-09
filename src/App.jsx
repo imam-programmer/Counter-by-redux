@@ -5,20 +5,20 @@ import { add5, decrement, increment } from './features/counterSlice'
 
 const App = () => {
   const count=useSelector((item)=>item.counter.value)
-  const [num, setNum] = useState(null)
+  const [num, setNum] = useState(0)
   const dispatch=useDispatch()
   return (
-    <div>
+    <div className='container'>
       <h1>{count}</h1>
-      <input type="number" onChange={(e)=>{
+      <button className='one' onClick={()=>dispatch(   
+        increment()   
+      )}>increment</button>
+      <input type="number" value={num} onChange={(e)=>{
 setNum(Number(e.target.value))
 console.log(e.target.value)
       }}/>
-      <button onClick={()=>dispatch(   
-          increment()   
-        )}>increment</button>
-      <button onClick={()=>dispatch(decrement())}>decrement</button>
-      <button onClick={()=>dispatch(add5(num))}>Increase by 5</button>
+        <button className='two' onClick={()=>dispatch(add5(num))}>Increase by input</button>
+      <button className='three' onClick={()=>dispatch(decrement())}>decrement</button>
     </div>
   )
 }
