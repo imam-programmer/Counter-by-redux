@@ -12,8 +12,8 @@ export const counterSlice=createSlice({
         decrement:(state)=>{
             state.value-=1
         },
-         add5:(state)=>{
-            state.value+=5
+         add5:(state,actions)=>{
+            state.value+=actions.payload
         }
     }
 })
